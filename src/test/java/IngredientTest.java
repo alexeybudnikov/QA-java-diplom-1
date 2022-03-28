@@ -9,27 +9,27 @@ import static org.junit.Assert.assertEquals;
 @RunWith(JUnit4.class)
 public class IngredientTest {
 
-    private final String NAME = "ingredient_name";
-    private final float PRICE = 10;
+    private final static String NAME = "ingredient_name";
+    private final static float PRICE = 10;
 
     @Test
     public void shouldReturnIngredientType(){
         Ingredient ingredient = new Ingredient(IngredientType.SAUCE, NAME, PRICE);
         IngredientType actualType = ingredient.getType();
-        assertEquals(IngredientType.SAUCE, actualType);
+        assertEquals("getType() returns incorrect type of ingredient",IngredientType.SAUCE, actualType);
     }
 
     @Test
     public void shouldReturnPrice(){
         Ingredient ingredient = new Ingredient(IngredientType.SAUCE, NAME, PRICE);
         float actualPrice = ingredient.getPrice();
-        assertEquals(10, actualPrice,0);
+        assertEquals("getPrice() returns incorrect price of ingredient",10, actualPrice,0);
     }
 
     @Test
     public void shouldReturnName(){
         Ingredient ingredient = new Ingredient(IngredientType.SAUCE, NAME, PRICE);
         String actualResult = ingredient.getName();
-        assertEquals(NAME, actualResult);
+        assertEquals("getName() returns incorrect name of ingredient",NAME, actualResult);
     }
 }

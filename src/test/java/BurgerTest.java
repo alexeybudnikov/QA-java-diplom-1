@@ -20,7 +20,7 @@ public class BurgerTest {
     Ingredient ingredient;
 
     @Mock
-    Ingredient ingredient_2;
+    Ingredient secondIngredient;
 
     private final static int NEW_INDEX = 1;
 
@@ -28,14 +28,14 @@ public class BurgerTest {
     public void shouldSetBun(){
         Burger burger = new Burger();
         burger.setBuns(bun);
-        assertEquals(bun, burger.bun);
+        assertEquals("setBun() sets incorrect bun",bun, burger.bun);
     }
 
     @Test
     public void shouldAddIngredients(){
         Burger burger = new Burger();
         burger.addIngredient(ingredient);
-        assertTrue(burger.ingredients.contains(ingredient));
+        assertTrue("addIngredient() was not added ingredient to ingredients",burger.ingredients.contains(ingredient));
     }
 
     @Test
@@ -44,17 +44,17 @@ public class BurgerTest {
         burger.addIngredient(ingredient);
         assertEquals(1, burger.ingredients.size());
         burger.removeIngredient(burger.ingredients.indexOf(ingredient));
-        assertEquals(0, burger.ingredients.size());
+        assertEquals("removeIngredient() was not remove ingredient from ingredients",0, burger.ingredients.size());
     }
 
     @Test
     public void shouldMoveIngredients(){
         Burger burger = new Burger();
         burger.addIngredient(ingredient);
-        burger.addIngredient(ingredient_2);
+        burger.addIngredient(secondIngredient);
         int ingredientIndex = burger.ingredients.indexOf(ingredient);
         burger.moveIngredient(ingredientIndex, NEW_INDEX);
-        assertEquals(NEW_INDEX, burger.ingredients.indexOf(ingredient));
+        assertEquals("moveIngredient() was not move ingredient to new index",NEW_INDEX, burger.ingredients.indexOf(ingredient));
     }
 
     @Test
@@ -65,7 +65,7 @@ public class BurgerTest {
         Mockito.when(bun.getPrice()).thenReturn(1f);
         Mockito.when(ingredient.getPrice()).thenReturn(2f);
         float actualPrice = burger.getPrice();
-        assertEquals(4,actualPrice,0);
+        assertEquals("getPrice() return wrong burger price",4,actualPrice,0);
     }
 
     @Test
@@ -80,6 +80,6 @@ public class BurgerTest {
         Mockito.when(ingredient.getName()).thenReturn("ingredient");
         String result = burger.getReceipt();
         String expectedResult = "(==== bun ====)\n= sauce ingredient =\n(==== bun ====)\n\nPrice: 4,000000";
-        assertEquals(expectedResult, result.trim().replace("\r",""));
+        assertEquals("getReceipt() return wrong receipt of burger",expectedResult, result.trim().replace("\r",""));
     }
 }

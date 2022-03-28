@@ -19,7 +19,7 @@ public class IngredientTypeTest {
         this.expectedResult = expectedResult;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Ingredient {0} exist in IngredientType: {1}")
     public static Object[][] checkResult(){
         return new Object[][]{
                 {"SAUCE",  true},
@@ -31,6 +31,6 @@ public class IngredientTypeTest {
     public void shouldCheckIngredient(){
         IngredientType[] ingredientTypes = IngredientType.values();
         boolean actualResult = Arrays.toString(ingredientTypes).contains(ingredient);
-        assertEquals(expectedResult, actualResult);
+        assertEquals("Ingredient is not exist in enum IngredientType",expectedResult, actualResult);
     }
 }
