@@ -13,23 +13,23 @@ public class IngredientTest {
     private final static float PRICE = 10;
 
     @Test
-    public void shouldReturnIngredientType(){
+    public void shouldReturnIngredientType() {
         Ingredient ingredient = new Ingredient(IngredientType.SAUCE, NAME, PRICE);
         IngredientType actualType = ingredient.getType();
-        assertEquals("getType() returns incorrect type of ingredient",IngredientType.SAUCE, actualType);
+        assertEquals("getType() returns incorrect type of ingredient", IngredientType.SAUCE, actualType);
     }
 
     @Test
-    public void shouldReturnPrice(){
+    public void shouldReturnPrice() {
         Ingredient ingredient = new Ingredient(IngredientType.SAUCE, NAME, PRICE);
         float actualPrice = ingredient.getPrice();
-        assertEquals("getPrice() returns incorrect price of ingredient",10, actualPrice,0);
+        assertEquals("getPrice() returns incorrect price of ingredient", 10, actualPrice, 0);
     }
 
     @Test
-    public void shouldReturnName(){
+    public void shouldReturnName() {
         Ingredient ingredient = new Ingredient(IngredientType.SAUCE, NAME, PRICE);
         String actualResult = ingredient.getName();
-        assertEquals("getName() returns incorrect name of ingredient",NAME, actualResult);
+        assertEquals("getName() returns incorrect name of ingredient", NAME, actualResult);
     }
 }

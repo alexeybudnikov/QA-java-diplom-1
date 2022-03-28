@@ -7,30 +7,29 @@ import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 
-
 @RunWith(Parameterized.class)
 public class IngredientTypeTest {
 
     private final String ingredient;
     private final boolean expectedResult;
 
-    public IngredientTypeTest(String ingredient, boolean expectedResult){
+    public IngredientTypeTest(String ingredient, boolean expectedResult) {
         this.ingredient = ingredient;
         this.expectedResult = expectedResult;
     }
 
     @Parameterized.Parameters(name = "Ingredient {0} exist in IngredientType: {1}")
-    public static Object[][] checkResult(){
+    public static Object[][] checkResult() {
         return new Object[][]{
-                {"SAUCE",  true},
+                {"SAUCE", true},
                 {"FILLING", true}
         };
     }
 
     @Test
-    public void shouldCheckIngredient(){
+    public void shouldCheckIngredient() {
         IngredientType[] ingredientTypes = IngredientType.values();
         boolean actualResult = Arrays.toString(ingredientTypes).contains(ingredient);
-        assertEquals("Ingredient is not exist in enum IngredientType",expectedResult, actualResult);
+        assertEquals("Ingredient is not exist in enum IngredientType", expectedResult, actualResult);
     }
 }
